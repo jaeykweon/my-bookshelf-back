@@ -12,7 +12,8 @@ import javax.persistence.*
 class BookModel (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    @Column()
+    val id: Int? = null,
 
     @Column(nullable = false)
     var bookName: String,
@@ -24,8 +25,9 @@ class BookModel (
     var onAir: Boolean? = false,  // 대출 여부
 
     @CreatedDate
-    var createdDate: LocalDate = LocalDate.MIN,
+    var createdDate: LocalDate = LocalDate.now(),
 
     var publishedDate: LocalDate? = null
+
 )
 // https://kapentaz.github.io/jpa/kotlin/Spring-Data-JPA-Audit-in-Kotlin/#
