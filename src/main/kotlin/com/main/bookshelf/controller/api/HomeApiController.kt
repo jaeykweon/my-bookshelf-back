@@ -2,6 +2,7 @@ package com.main.bookshelf.controller.api
 
 import com.main.bookshelf.model.BookModel
 import com.main.bookshelf.service.BookService
+import org.hibernate.validator.constraints.ISBN
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -26,8 +27,16 @@ class HomeApiController {
     }
 
     @PostMapping(path=["/"])
-    fun registNewBook(@RequestBody newBook:BookModel): ResponseEntity<BookModel?> {
+    fun registNewBook(@RequestBody newBook:BookModel): ResponseEntity<Any?> {
+        if(bookService.getBookDetail(newBook.isbn) != null){
+            return ResponseEntity.badRequest().body("{'message': 'already exists'}")
+        }
         return ResponseEntity.ok().body(
             bookService.registBook(newBook))
+    }
+
+    @PutMapping(path=["/{isbn}"])
+    fun updateBook(@PathVariable isbn:ISBN, @RequestBody book: BookModel): BookModel{
+        return book
     }
 }

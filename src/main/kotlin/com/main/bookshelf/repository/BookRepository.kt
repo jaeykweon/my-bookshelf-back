@@ -1,6 +1,7 @@
 package com.main.bookshelf.repository
 
 import com.main.bookshelf.model.BookModel
+import org.hibernate.validator.constraints.ISBN
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.CrudRepository
@@ -12,7 +13,7 @@ interface  BookRepository:CrudRepository<BookModel, Int>{
 
     fun findBookModelsBy(pageable:Pageable) : Page<BookModel>?
 
-    fun findBookModelById(id:Int) : BookModel?
+    fun findBookModelByIsbn(isbn: String) : BookModel?
 
 }
 
