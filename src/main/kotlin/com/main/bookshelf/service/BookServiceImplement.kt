@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
+import java.time.LocalDate
+import java.util.*
 
 @Service
 class BookServiceImplement constructor(@Autowired private val bookRepository: BookRepository): BookService {
@@ -20,5 +22,7 @@ class BookServiceImplement constructor(@Autowired private val bookRepository: Bo
         return bookRepository.findBookModelById(id)
     }
 
-
+    override fun registBook(newBook: BookModel): BookModel?{
+        return bookRepository.save(newBook)
+    }
 }

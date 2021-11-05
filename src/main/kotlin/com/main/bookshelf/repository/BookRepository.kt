@@ -13,7 +13,7 @@ interface  BookRepository:CrudRepository<BookModel, Int>{
     fun findBookModelsBy(pageable:Pageable) : Page<BookModel>?
 
     fun findBookModelById(id:Int) : BookModel?
-//    fun findBookModelBy()
+
 }
 
 
