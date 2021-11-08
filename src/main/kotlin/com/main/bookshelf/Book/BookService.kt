@@ -1,11 +1,8 @@
-package com.main.bookshelf.service
+package com.main.bookshelf.Book
 
-import com.main.bookshelf.model.BookModel
-import org.hibernate.validator.constraints.ISBN
+import com.main.bookshelf.Book.BookModel
 import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
-import java.time.LocalDate
-import java.util.*
 
 @Service
 interface BookService {
@@ -16,5 +13,5 @@ interface BookService {
 
     fun getBookDetail(isbn:String): BookModel?
 
-    fun registBook(newBook:BookModel): BookModel?
+    fun registBook(newBook: BookModel): BookModel?
 }
